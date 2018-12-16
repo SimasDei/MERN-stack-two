@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
@@ -7,11 +8,18 @@ const posts = require('./routes/api/posts');
 
 const app = express();
 
+//Body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 // Database Configuration
 const db = require('./config/keys').mongoURI;
 // Connect to MongoDB through Mongoose
 mongoose
-  .connect(db)
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
   .then(() => console.log('Connection Established, Captain!'))
   .catch(err => console.log("It's Dead, Jim :( ", err));
 
