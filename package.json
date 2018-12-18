@@ -4,13 +4,15 @@
   "description": "App made with MongoDb Express js React and Node",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server"
+    "server": "nodemon server",
+    "start": "concurrently \"npm run server\" \"npm start --prefix client\" "
   },
   "author": "Simas Dei",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "express": "^4.16.4",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.4.0",
