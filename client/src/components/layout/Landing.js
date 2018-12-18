@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Landing extends Component {
   render() {
@@ -14,12 +15,12 @@ class Landing extends Component {
                   Application Made using MongoDB + Express + React + Node
                 </p>
                 <hr />
-                <a href="register.html" class="btn btn-lg btn-info mr-2">
+                <Link to="/register" class="btn btn-lg btn-info mr-2">
                   Sign Up
-                </a>
-                <a href="login.html" class="btn btn-lg btn-light">
+                </Link>
+                <Link to="/login" class="btn btn-lg btn-light">
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           </div>
