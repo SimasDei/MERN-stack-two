@@ -18,6 +18,14 @@ class Register extends Component {
     };
   }
 
+  componentDidMount() {
+    // Check to see if the user is logged in
+    if (this.props.auth.isAuthenticated) {
+      // Redirect from the Register page
+      this.props.history.push('/dashboard');
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     // Check if there are any errors in the REDUX state
     // If true, combine with the component error state
