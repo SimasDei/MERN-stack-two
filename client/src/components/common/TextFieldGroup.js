@@ -36,15 +36,17 @@ TextFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  info: PropTypes.string,
-  error: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  error: PropTypes.string,
+  info: PropTypes.string,
+  label: PropTypes.string,
   disabled: PropTypes.string
 };
 
 TextFieldGroup.defaultProps = {
-  type: 'text'
+  type: 'text',
+  value: ''
 };
 
 export default TextFieldGroup;
