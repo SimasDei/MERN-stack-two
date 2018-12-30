@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getCurrentProfile } from '../../actions/profileActions';
 import Spinner from '../common/Spinner';
 import { Link } from 'react-router-dom';
+import ProfileActions from './ProfileActions';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -22,14 +23,19 @@ class Dashboard extends Component {
     } else {
       // Check if the current user has a Profile
       if (Object.keys(profile).length > 0) {
-        dashboardContent = <h4>Ahoy Sailor o/, nice Profile</h4>;
+        dashboardContent = (
+          <div>
+            <p className="lead text-muted">
+              Hello, dear sir and Or mam.{' '}
+              <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+            </p>
+          </div>
+        );
       } else {
         // Suggest to create a profile
         dashboardContent = (
           <div>
-            <p className="lead text-muted">
-              Hello, dear sir and Or mam. {user.name}
-            </p>
+            <p className="lead text-muted">New Profile Time!</p>
             <p>Set up a Profile !</p>
             <Link to="/create-profile" className="btn btn-lg btn-info">
               Create Profile
