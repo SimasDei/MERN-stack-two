@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -197,6 +197,9 @@ class EditProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+              <Link to="/dashboard" className="btn btn-light">
+                Back
+              </Link>
               <h1 className="display-4 text-center">Edit your Profile</h1>
               <small className="d-block pb-3 text-center text-danger">
                 *required
