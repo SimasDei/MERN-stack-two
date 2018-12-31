@@ -39,6 +39,33 @@ export const createProfile = (profileData, history) => dispatch => {
     );
 };
 
+// Profile Loading action
+export const setProfileLoading = () => {
+  return {
+    type: PROFILE_LOADING
+  };
+};
+
+// Clear Profile
+export const clearProfile = () => {
+  return {
+    type: CLEAR_CURRENT_PROFILE
+  };
+};
+
+// Add Experience On Success: Redirect, else call get Errors
+export const addExperience = (expData, history) => dispatch => {
+  axios
+    .post('/api/profile/experience', expData)
+    .then(res => history.push('/dashboard'))
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
 // Delete Account AND Profile
 export const deleteAccount = () => dispatch => {
   if (window.confirm('This is permanent, Are you sure ?')) {
@@ -57,18 +84,4 @@ export const deleteAccount = () => dispatch => {
         })
       );
   }
-};
-
-// Profile Loading action
-export const setProfileLoading = () => {
-  return {
-    type: PROFILE_LOADING
-  };
-};
-
-// Clear Profile
-export const clearProfile = () => {
-  return {
-    type: CLEAR_CURRENT_PROFILE
-  };
 };
