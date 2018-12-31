@@ -41,7 +41,7 @@ class Navbar extends Component {
             style={{ width: '25px', marginRight: '5px' }}
             src={user.avatar}
             alt={user.name}
-            title="If tiy gave Gravatar Connected, your image will be displayed here"
+            title="If you have Gravatar Connected, your image will be displayed here"
           />
         </li>
       </ul>
