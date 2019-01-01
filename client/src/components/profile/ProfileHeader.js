@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import isEmpty from '../../validation/is-empty';
 class ProfileHeader extends Component {
   render() {
@@ -31,14 +32,14 @@ class ProfileHeader extends Component {
               )}
 
               {isEmpty(profile.website) ? null : (
-                <a
+                <Link
                   rel="noopener noreferrer"
-                  href={`https://` + profile.website}
+                  to={`https://` + profile.website}
                   target="_blank"
                   className="text-white p-2"
                 >
                   <i className="fas fa-globe fa-2x" />
-                </a>
+                </Link>
               )}
 
               {isEmpty(profile.social && profile.social.twitter) ? null : (

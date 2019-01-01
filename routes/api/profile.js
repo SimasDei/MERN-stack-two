@@ -88,6 +88,7 @@ router.get('/user/:user_id', (req, res) => {
 //@desc Get All Profiles
 //@access Public
 router.get('/all', (req, res) => {
+  const errors = {};
   Profile.find()
     .populate('user', ['name', 'avatar'])
     .then(profiles => {
@@ -95,9 +96,10 @@ router.get('/all', (req, res) => {
         errors.noprofile = 'No Profiles found, they are all gone!';
         return res.status(404).json(errors);
       }
-      res.json(profiles).catch(err => {
-        res.status(404).json({ profile: "Everyone's Dead! AAah" + err });
-      });
+      res.json(profiles);
+    })
+    .catch(err => {
+      res.status(404).json({ profile: "Everyone's Dead! AAah" + err });
     });
 });
 
@@ -127,7 +129,7 @@ router.post(
     if (req.body.githubUsername)
       profileFields.githubUsername = req.body.githubUsername;
     // Skills Split into array
-    if (typeof req.body.skills != 'undefined') {
+    if (typeof req.body.skills !== 'undefined') {
       profileFields.skills = req.body.skills.split(',');
     }
     // Socials
