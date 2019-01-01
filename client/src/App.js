@@ -22,6 +22,7 @@ import EditProfile from './components/edit-profile/EditProfile';
 import AddExperience from './components/add-experience/AddExperience';
 import AddEducation from './components/add-experience/AddEducation';
 import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
 
 import './App.css';
 
@@ -59,6 +60,7 @@ class App extends Component {
               <Route path="/register" component={Register} />
               <Route path="/login" component={Login} />
               <Route path="/profiles" component={Profiles} />
+              <Route path="/profile/:handle" component={Profile} />
               <Switch>
                 <PrivateRoute path="/dashboard" component={Dashboard} />
               </Switch>
