@@ -1,6 +1,5 @@
-module.exports = {
-  mongoURI:
-    'mongodb+srv://SimasDei:02894145@baltic-react-mongodb-one-l0d3u.mongodb.net/crud?retryWrites=true',
-  // Key for JWT
-  secretOrKey: 'secret'
-};
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./keys_prod');
+} else {
+  module.exports = require('./keys_dev');
+}
