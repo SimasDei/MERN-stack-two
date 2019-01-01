@@ -110,7 +110,7 @@ export const getProfiles = () => dispatch => {
         payload: res.data
       })
     )
-    .catch(() =>
+    .catch(err =>
       dispatch({
         type: GET_PROFILES,
         payload: null

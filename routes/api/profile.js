@@ -39,7 +39,9 @@ router.get(
         res.json(profile);
       })
       .catch(err =>
-        res.status(404).json({ profile: 'There is no profile for this user' })
+        res
+          .status(404)
+          .json({ profile: 'There is no profile for this user' + err })
       );
   }
 );
@@ -94,7 +96,7 @@ router.get('/all', (req, res) => {
         return res.status(404).json(errors);
       }
       res.json(profiles).catch(err => {
-        res.status(404).json({ profile: "Everyone's Dead! AAah" });
+        res.status(404).json({ profile: "Everyone's Dead! AAah" + err });
       });
     });
 });
