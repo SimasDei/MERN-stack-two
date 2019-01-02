@@ -9,6 +9,9 @@ const posts = require('./routes/api/posts');
 
 const app = express();
 
+// Using /build fr deployment
+app.use( express.static( `${__dirname}/../build` ) );
+
 //Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -35,6 +38,12 @@ app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
 const port = process.env.PORT || 5000;
+
+// Establish endpoint for porduction Build
+const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+}
 
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
